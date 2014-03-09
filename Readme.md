@@ -1,4 +1,4 @@
-# css-clipboard
+# css-clipboard ([WIP](http://chemzqm.github.io/css-clipboard/))
 
 CSS classes for copy and change.
 
