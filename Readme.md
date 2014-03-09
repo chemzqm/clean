@@ -11,8 +11,8 @@ Another way of making css is using [sass](http://sass-lang.com/), [less](http://
 * It costs lots of time for learning the specific rules, which are quite self opinionated.
 * It costs lots of time for making/understanding design decisions with the preprocessing language.
 * It costs more time for debugging the css even if you have watch tools and source map enabled.
-* The code can't shared easily between different projects, especially when you use the functionality like variables.
-* Horrible for css upgrade, when you need to rewrite css for a single block element, you can do noting unless you got fully understanding of code related as they are coupled and may exist in different files.
+* The code can't be shared easily between different projects, especially when you use the functionality like variables.
+* Horrible for css upgrade, when you need to rewrite css for a single block element, you can do nothing unless you got fully understanding of code related as they are coupled and may exist in different files.
 
 The only benefit of these preprocessing languages I found is you can write less code, but less code don't means easy to maintain (clean code means).  The website upgrade is not something like changing some variables, but most frequently adding and removing code blocks.  I've merely meet the requirement of changing the variables I designed with the preprocessing language, and that means the design process and correspondingly understanding process just waste of time.  There's one thing that should be automated is css prefix, I've used some tools and I found [autoprefixer](https://github.com/ai/autoprefixer) most useful.
 
