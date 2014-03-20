@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/show-hint.css">
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/codemirror.min.js"></script>
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/keymap/vim.min.js"></script>
-  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/show-hint.js"></script>
-  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/css-hint.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/show-hint.min.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/css-hint.min.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/edit/closebrackets.min.js"></script>
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/mode/css/css.min.js"></script>
   <style>
     #fork {
@@ -1087,6 +1088,7 @@ pre {
       var value = node.textContent;
       var parent = node.nextElementSibling;
       var cm = CodeMirror(parent, {
+        autoCloseBrackets: true,
         extraKeys: {"Tab": "autocomplete"},
         value: value,
         mode:  "css"
