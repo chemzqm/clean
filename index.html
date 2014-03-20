@@ -1053,6 +1053,7 @@ pre {
 
   <script>
     var ids = ['basic', 'default', 'layout', 'component', 'utility', 'unicode', 'media-query'];
+    var cms = [];
     ids.forEach(function (id) {
       var el = document.getElementById(id);
       var style = el.previousElementSibling;
@@ -1060,14 +1061,28 @@ pre {
       var cm = CodeMirror(el, {
         value: value,
         tabSize: 2,
-        mode:  "css",
-        vimMode: true
+        mode:  "css"
       });
+      cms.push(cm);
       cm.on('change', function () {
         var v = cm.getValue();
         style.innerHTML = v;
       })
-    })
+    });
+    var cb = document.getElementById('vim');
+    var mode = !!window.localStorage.getItem('mode');
+    cb.checked = mode;
+    function config(vimMode) {
+      cms.forEach(function (cm) {
+        cm.setOption('vimMode', vimMode);
+      })
+    }
+    config(mode);
+    cb.addEventListener('change', function() {
+      var c = cb.checked;
+      window.localStorage.setItem('mode', c? '1' : '');
+      config(c);
+    });
   </script>
 </body>
 </html>
