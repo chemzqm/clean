@@ -6,9 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="http://cdn.staticfile.org/normalize/3.0.0/normalize.min.css">
+  <link rel="stylesheet" href="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/show-hint.css">
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/codemirror.min.js"></script>
-  <script src="http://cdn.staticfile.org/codemirror/3.22.0/mode/css/css.min.js"></script>
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/keymap/vim.min.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/show-hint.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/addon/hint/css-hint.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/mode/css/css.min.js"></script>
   <style>
     #fork {
       position: fixed;
@@ -87,7 +90,7 @@
     </ul>
   </nav>
   <div class="container">
-    <p>Change the css and see effect in time.
+    <p>Change the css and see effect in time.<code>tab</code> can be used for autocomplete.
     </p>
     <p>
     <label for="vim"><input type="checkbox" name="vim" id="vim"> vim模式</label>
@@ -1084,8 +1087,8 @@ pre {
       var value = node.textContent;
       var parent = node.nextElementSibling;
       var cm = CodeMirror(parent, {
+        extraKeys: {"Tab": "autocomplete"},
         value: value,
-        tabSize: 2,
         mode:  "css"
       });
       cms.push(cm);
