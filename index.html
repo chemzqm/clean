@@ -80,7 +80,7 @@
     <ul>
       <li><a href="#basic">basic</a></li>
       <li><a href="#default">default</a></li>
-      <li><a href="#grid">grid</a></li>
+      <li><a href="#layout">layout</a></li>
       <li><a href="#component">component</a></li>
       <li><a href="#utility">utility</a></li>
       <li><a href="#unicode">unicode</a></li>
@@ -327,10 +327,42 @@ pre {
   }
 
 }
+/**
+ *  - one or more columns could be fixed
+ *  - columns height are equal
+ *  - columns could have average width
+ *  - content could align to middle
+ *
+ * .column>.fixed~div
+ */
+.column {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  min-height: 200px;
+}
+.column > * {
+  display: table-cell;
+  padding: 10px;
+  vertical-align: top;
+}
+.column > .fixed {
+  width: 300px;
+}
+@media handheld, only screen and (max-width: 767px) {
+  .column,
+  .column > * {
+    display: block;
+  }
+  .column > .fixed {
+    width: auto;
+  }
+}
 </style>
-    <section id="grid">
-      <h1>grid</h1>
+    <section id="layout">
+      <h1>layout</h1>
       <div>
+        <h2>grid</h2>
         <div class="grid">
           <div class="col-1-1">1-1</div>
         </div>
@@ -357,6 +389,11 @@ pre {
         <div class="grid">
           <div class="col-6-12">6-12</div>
           <div class="col-6-12">6-12</div>
+        </div>
+        <h2 style="margin-top: 1400px;">column</h2>
+        <div class="column">
+          <div class="fixed">fixed column</div>
+          <div>content column</div>
         </div>
       </div>
     </section>
@@ -1007,7 +1044,7 @@ pre {
   </section>
 
   <script>
-    var ids = ['basic', 'default', 'grid', 'component', 'utility', 'unicode', 'media-query'];
+    var ids = ['basic', 'default', 'layout', 'component', 'utility', 'unicode', 'media-query'];
     ids.forEach(function (id) {
       var el = document.getElementById(id);
       var style = el.previousElementSibling;
