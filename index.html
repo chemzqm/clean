@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="codemirror/lib/codemirror.css">
   <link rel="stylesheet" href="http://cdn.staticfile.org/normalize/3.0.0/normalize.css">
-  <script src="http://cdn.staticfile.org/jquery/2.1.0/jquery.js"></script>
   <script src="http://cdn.staticfile.org/codemirror/3.22.0/codemirror.min.js"></script>
-  <script src="http://cdn.staticfile.org/codemirror/3.22.0/mode/css/css.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/mode/css/css.min.js"></script>
+  <script src="http://cdn.staticfile.org/codemirror/3.22.0/keymap/vim.min.js"></script>
   <style>
     #fork {
-    position: fixed;
-    right: 0;
-    top: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
     }
     .container {
       width: 1040px;
@@ -88,6 +88,9 @@
   </nav>
   <div class="container">
     <p>Change the css and see live changes in time.
+    </p>
+    <p>
+    <input type="checkbox" name="vim" id="vim"> vim模式
     </p>
 <style>
 * {
@@ -189,12 +192,13 @@ pre {
     </section>
 <style>
 /*
-  Simple Grid
-  Learn More - http://dallasbass.com/simple-grid-a-lightweight-responsive-css-grid/
-  Project Page - http://thisisdallas.github.com/Simple-Grid/
-  Author - Dallas Bass
-  Site - dallasbass.com
-*/
+ *  Simple Grid
+ *  Learn More - http://dallasbass.com/simple-grid-a-lightweight-responsive-css-grid/
+ *  Project Page - http://thisisdallas.github.com/Simple-Grid/
+ *  Author - Dallas Bass
+ *
+ *  .grid.grid-pad>.col-4-12~.col-8-12
+ */
 
 [class*='col-'] {
   float: left;
@@ -730,6 +734,11 @@ pre {
 /**
  * .form
  */
+.form {
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
 .form form > * {
   margin: 15px 0;
 }
@@ -1008,14 +1017,14 @@ pre {
           <div class="caret-left"></div>
           <div class="caret-right"></div>
         <h2>close</h2>
+        <div id="window">
+          <div class="close">&times;</div>
+        </div>
         <h2>circle</h2>
           <div class="circle"></div>
         <h2>star</h2>
           <div class="star"></div>
           <div class="starf"></div>
-        <div id="window">
-          <div class="close">&times;</div>
-        </div>
     </div>
   </section>
 <style>
@@ -1051,7 +1060,8 @@ pre {
       var cm = CodeMirror(el, {
         value: value,
         tabSize: 2,
-        mode:  "css"
+        mode:  "css",
+        vimMode: true
       });
       cm.on('change', function () {
         var v = cm.getValue();
